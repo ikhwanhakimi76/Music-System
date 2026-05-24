@@ -13,10 +13,12 @@ using namespace std;
 int main()
 {
     MusicController musicController;
+    
     int a;
     int f; int d; int de;
     for(;;)
     {
+        mainDisplay();
         cin >> a;
         switch(a)
         {
@@ -27,7 +29,8 @@ int main()
         }
         case 2:
         {
-            cout << musicController.getNoteCount() << endl;
+            musicController.display();
+            cout << musicController.getNoteCount() << " Notes" << endl;
             break;
         }
         case 3:
@@ -46,20 +49,21 @@ int main()
         }
         case 4:
         {
+            removeDisplay();
             int choice;
             cin >> choice;
             switch(choice)
             {
                 case 1:
                     musicController.reset();
-                    cout << "filthy soul has been cleansed" << endl;
+                    cout << "Notes reset!" << endl;
                     break;
                 case 2:
                     musicController.removeNote(musicController.Notes.size() - 1);
-                    cout << "gone" << endl;
+                    cout << "Last note removed!" << endl;
                     break;
                 default:
-                    cout << "not valid gng" << endl;
+                    cout << "Invalid choice." << endl;
                 break;
             }
             break;

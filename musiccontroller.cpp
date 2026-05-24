@@ -3,6 +3,7 @@
 #include<thread>
 #include<vector>
 #include<windows.h>
+#include<iomanip>
 #ifndef MUSICCONTROLLER_H
 #define MUSICCONTROLLER_H
 #ifndef NOTE_H
@@ -88,6 +89,28 @@ class MusicController
         mark = 1;
         
         return Notes.size() - 1, mark;
+    }
+
+    void display() const 
+    {
+        cout << "\n--------------------------------------------------" << endl;
+        cout << "       ------------Current Notes-------------" << endl;
+        cout << "--------------------------------------------------" << endl;
+        cout << left << setw(5) << "No" << left << setw(25) << "Frequency"<< right << setw(10) << "Duration" << right << setw(10) << "Delay" << endl;
+
+        if(Notes.size() == 0)
+        {
+            cout << left << setw(25) << "\nno notes" << endl;
+        }else{
+            for(int i=0; i < Notes.size(); i++)
+            {
+                cout << left << setw(5) <<i + 1 << left << setw(25) << Notes[i].frequency;
+                cout << right << setw(10) << Notes[i].duration;
+                cout << right << setw(10) << Notes[i].delay << endl;
+            }
+        }
+
+        cout << "--------------------------------------------------" << endl;
     }
 };
 
